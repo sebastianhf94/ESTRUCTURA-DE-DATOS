@@ -1,0 +1,134 @@
+
+#pragma once
+const int MAX = 100;
+class pilasejemplo
+{
+
+private:
+	int pilas[MAX], tope;
+public:
+	pilasejemplo(void);
+	~pilasejemplo(void);
+bool pila_vacia();
+bool pila_llena();
+void pila_insertar(int dato);
+int pila_eliminar();
+void mostrarpila();
+
+};
+
+
+#include "StdAfx.h"
+#include "pilasejemplo.h"
+#include "iostream"
+#include "conio.h"
+using namespace std;
+
+pilasejemplo::pilasejemplo(void)
+{
+	tope=(-1);
+}
+
+
+pilasejemplo::~pilasejemplo(void)
+{
+}
+
+bool pilasejemplo::pila_vacia()
+{if(tope==-1)
+return true;
+else
+	return false;
+}
+
+bool pilasejemplo::pila_llena()
+{if(tope==(MAX-1))
+return true;
+else
+return false;
+}
+
+void pilasejemplo::pila_insertar(int dato)
+{tope++;
+pilas[tope]=dato;
+}
+
+int pilasejemplo::pila_eliminar()
+{int dato;
+dato=pilas[tope];
+tope--;
+return(dato);
+}
+
+void pilasejemplo::mostrarpila()
+{int i;
+for(i=tope; i>=0;i--)
+cout<<" | "<<pilas[i]<<" | "<<endl;
+}
+
+
+
+
+
+
+
+
+#include "StdAfx.h"
+#include "pilasejemplo.h"
+#include "iostream"
+#include "conio.h"
+using namespace std;
+
+void main()
+{int op, tope,x;
+	pilasejemplo pilasejemplo1;
+
+	do{
+		cout<<"----  MENU  ----"<<endl;
+		cout<<"1.INGRESAR        "<<endl;
+		cout<<"2.ELIMINAR        "<<endl;
+		cout<<"3.MOSTRAR        "<<endl;
+		cout<<"4.SALIR        "<<endl;
+		cin>>op;
+		switch(op)
+		{
+		case 1:
+			{if (pilasejemplo1.pila_llena()==false)
+				{cout<<"INGRESE DATO"<<endl;
+			cin>>x;
+				pilasejemplo1.pila_insertar(x);
+				}else
+					cout<<"PILA LLENA";
+			}
+			break;
+
+		case 2:
+			{if(pilasejemplo1.pila_vacia()==false)
+			{pilasejemplo1.pila_eliminar();
+			}else
+				cout<<"PILA VACIA";
+			}
+			break;
+
+		case 3:
+		{pilasejemplo1.mostrarpila();
+		}	break;
+
+		case 4:
+			cout<<"SALIR"<<endl;
+			break;
+
+		default:
+			cout<<"ERROR";
+			break;
+		}
+	}while(op!=4);
+	getch();
+}
+
+
+
+
+
+
+
